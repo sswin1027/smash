@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    $categories = Category::all();
+    return view('home',compact('categories'));
 })->name('home');
 
 Route::get('/articles', function () {
@@ -20,15 +22,15 @@ Route::get('/workshops', function () {
 Route::get('/conferences', function () {
     return "conferences";
 })->name('conferences');
-Route::get('/categories', [CategoryController::class, 'category'])->name('categories.category');
+// Route::get('/categories', [CategoryController::class, 'category'])->name('categories.category');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/home', function () {
-    return 'home';
-})->middleware('age:50');
+// Route::get('/home', function () {
+//     return 'home';
+// })->middleware('age:50');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
