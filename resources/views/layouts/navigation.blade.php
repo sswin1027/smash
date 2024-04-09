@@ -36,6 +36,13 @@
                         {{ __('conferences') }}
                     </x-nav-link>
                 </div>
+                {{-- @auth --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('categories.create')" :active="request()->routeIs('categories.create')">
+                        {{ __('Create Category') }}
+                    </x-nav-link>
+                </div>
+                {{-- @endauth --}}
             </div>
             @auth
 

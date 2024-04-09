@@ -22,7 +22,8 @@ Route::get('/workshops', function () {
 Route::get('/conferences', function () {
     return "conferences";
 })->name('conferences');
-// Route::get('/categories', [CategoryController::class, 'category'])->name('categories.category');
+Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
